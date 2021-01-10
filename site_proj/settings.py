@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+
+
+Import django_heroku
 from pathlib import Path
 import os
 
@@ -50,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleWare',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -137,8 +141,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, ’staticfiles’)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
+STATICFILES_STORAGE = ‘whitenoise.storage.CompressedManifestStaticFilesStorage’
 
 
 
@@ -180,6 +186,9 @@ EMAIL_USE_TLS = True
 CRISPY_TEMPLATE_PACK = 'Bootstrap3'
 
 
+django_heroku.settings(locals())
+
+
 
 
 
@@ -210,3 +219,7 @@ CRISPY_TEMPLATE_PACK = 'Bootstrap3'
 # EMAIL_HOST_PASSWORD = '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'
 # EMAIL_PORT = 587   # not change from sendgrid website page
 # EMAIL_USE_TLS = True    # not change from sendgrid website page
+
+
+
+

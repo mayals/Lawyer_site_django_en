@@ -4,8 +4,10 @@ autopep8==1.4.4
 certifi==2019.11.28
 cffi==1.14.0
 colorama==0.4.1
+dj-database-url==0.5.0
 Django==3.1.4
 django-crispy-forms==1.10.0
+django-heroku==0.3.1
 django-markdown-deux==1.0.5
 django-pagedown==0.1.1
 django-suit @ https://github.com/darklow/django-suit/tarball/v2
@@ -31,4 +33,5 @@ sqlparse==0.4.1
 typed-ast==1.4.0
 virtualenv==16.4.3
 virtualenv-clone==0.5.3
+whitenoise==5.2.0
 wrapt==1.11.1
