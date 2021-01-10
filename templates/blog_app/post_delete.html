@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+    <section>
+
+
+        <br><br><br>
+
+
+        <div>
+            <p>
+                <ol class="breadcrumb">
+
+                    <li><b><a href="{% url 'blog_app:cats_list' %}">Categories </a></b></li>
+                    <!-- ><li><a href="#">Library</a></li> -->
+                    <li><b><a href="{% url 'blog_app:posts_to_cat' cat_selected.id  %}">{{cat_selected.cat_title}}</a></b></li>
+                    <li class="active"><b>{{cat_post_detail.post_title}}</b></li>
+                </ol>
+            </p>
+        </div>
+
+
+
+        <br>
+
+        <div>
+            <h5>Post delete </h5>
+            <p><b>Are you sure about delete this post ?</b></p>
+
+        </div>
+        <br>
+
+        <!-- add new post form  -->
+        <div class='row '>
+            <form method='POST' action="{% url 'blog_app:post_delete' cat_id=cat_selected.id   post_id=cat_post_detail.id %}">
+                {% csrf_token %}
+                <a href="{% url 'blog_app:cat_post_detail' cat_selected.id  cat_post_detail.id  %}">  cancel  </a>
+                <button type='submit' class="btn btn-warning"> <small>delete</small></button>
+
+                <br><br>
+            </form>
+        </div>
+
+
+    </section>
+
+</div>
+{% endblock %}

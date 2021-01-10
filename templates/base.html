@@ -1,0 +1,79 @@
+{% load static %}
+<html>
+
+<head>
+    <!-- META DATA -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <title>The lawyer - Personal business website</title>
+
+
+
+
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" type="text/css" href="{%  static 'pages_app/css/bootstrap.min.css' %}">
+
+    <!-- Owl Carousel Assets -->
+    <link rel="stylesheet" href="{%  static 'pages_app/css/owl.carousel.css' %}">
+    <!-- <link href="owl-carousel/owl.theme.css" rel="stylesheet"> -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{%  static 'pages_app/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%  static 'pages_app/css/animate.min.css' %}">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" type="text/css" href="{%  static 'pages_app/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%  static 'pages_app/css/googleapis.css' %}">
+
+
+
+</head>
+
+
+
+<body>
+    {% include 'base_parts/header.html' %} {% block content %} {% endblock %} {% include 'base_parts/footer.html' %}
+
+
+    <!-- -----------------------[Java Scripts ]----------------------------------------------------------- -->
+    <!-- jQuery -->
+    <div>
+        <script type="text/javascript" src="{% static 'pages_app/js/jquery-2.1.1.js' %}"></script>
+        <script type="text/javascript" src="{% static 'pages_app/js/bootstrap.min.js' %}"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="{% static 'pages_app/js/agency.js' %}"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="{% static 'pages_app/js/jquery.easing.min.js' %}"></script>
+        <script src="{% static 'pages_app/js/classie.js' %}"></script>
+        <script src="{% static 'pages_app/js/cbpAnimatedHeader.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'pages_app/js/wow.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'pages_app/js/jquery.isotope.js' %}"></script>
+        <script type="text/javascript" src="{% static 'pages_app/js/main.js' %}"></script>
+
+
+        <!-- carousel -->
+        <script src="{% static 'pages_app/js/owl.carousel.js' %}"></script>
+        <script>
+            $(document).ready(function() {
+                $("#owl-brand").owlCarousel({
+                    autoPlay: 3000,
+                    items: 6,
+                    itemsDesktop: [1199, 4],
+                    itemsDesktopSmall: [979, 2],
+                    navigation: true,
+                    navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
+                    pagination: false
+                });
+            });
+        </script>
+    </div>
+</body>
+
+</html>

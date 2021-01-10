@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block content %} {% load crispy_forms_tags %}
+
+<br><br><br><br><br><br>
+
+<!--messges -->
+{% if messages %} {% for message in messages %}
+<div class='alert alert-{{message.tags}}'>
+    <strong>{{ message }}</strong>
+</div> {% endfor %} {% endif %}
+
+<!--end messages -->
+
+<div class="container">
+    <section>
+        <h4>Contact us</h4>
+        <br><br>
+        <div class="col-md-6">
+            <form method="POST" class="form-group">
+                {%csrf_token %} {{form|crispy}}
+                <div><button type="submit">send</button></div>
+            </form>
+        </div>
+        <div class="col-md-6 wow fadeInLeft " style='padding:70px;'>
+            <p><strong>Contact Info</strong></p>
+            <!-- <span>SED UT PERSPICIATIS UNDE OMNIS ISTE NATUS ERROR SIT VOLUPTATEM ACCUSANTIUM DOLOREMQUE LAUDANTIUM, TOTAM REM APERIAM.</span><br> <br> -->
+            <p>JL.Kemacetan timur no.23. block.Q3<br> Jakarta-Indonesia
+            </p>
+            <p>+6221 888 888 90 <br> +6221 888 88891</p>
+            <p>info@yourdomain.com</p>
+        </div>
+
+    </section>
+
+    <br><br>
+</div>
+
+
+{% endblock %}

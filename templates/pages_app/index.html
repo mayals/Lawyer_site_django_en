@@ -1,0 +1,236 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+
+
+<br><br><br>
+<!--messges -->
+{% if messages %} {% for message in messages %}
+<div class='alert alert-{{message.tags}}'>
+    <strong>{{ message }}</strong>
+</div> {% endfor %} {% endif %}
+
+<!--end messages -->
+
+
+<div id="page-content">
+
+    <!-- ////////////Content Box 01 -->
+    <section class="box-content box-1 box-style-1" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="box-item">
+                        <div class="wrap-img">
+                            <img src="{% static 'pages_app/images/lawer/icon_1.png' %}" />
+                        </div>
+                        <h3 class="services-heading">Text Heading A</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quo. Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. </p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box-item">
+                        <div class="box-item">
+                            <div class="wrap-img">
+                                <img src="{% static 'pages_app/images/lawer/icon_2.png' %}" />
+                            </div>
+                            <h3 class="services-heading">Text Heading B</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quo. Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box-item">
+                        <div class="box-item">
+                            <div class="wrap-img">
+                                <img src="{% static 'pages_app/images/lawer/icon_3.png' %}" />
+                            </div>
+                            <h3 class="services-heading">Text Heading C</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quo. Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ////////////Content Box 02 (deleted) -->
+
+    <!-- end Content Box 02(deleted)  -->
+
+
+
+
+    <!-- ////////////Content Box -->
+    <section class="box-content box-style-1">
+
+        <div class="container">
+            <div class="row heading">
+                <div class="col-lg-12">
+                    <h2>OUR SERVICES</h2>
+                    <hr class="line02">
+                    <div class="intro">Lorem ipsum dolor sit amet</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="post" style="background: #fff;">
+                    <div class="col-lg-6" style="padding: 0;">
+                        <img src="{% static 'pages_app/images/lawer/service_1.jpg' %}" />
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="t-center" style="padding: 70px 0;">
+                            <h3>The title of the service</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus.</p>
+                            <a class="btn btn-skin" href="{% url 'pages_app:under_construction' %}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="post" style="background: #fff;">
+                    <div class="col-lg-6 fix-right" style="padding: 0;">
+                        <div class="art-header">
+                            <img src="{% static 'pages_app/images/lawer/service_2.jpg' %}" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="t-center" style="padding: 70px 0;">
+                            <h3>The title of the service</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus.</p>
+                            <a class="btn btn-skin" href="{% url 'pages_app:under_construction' %}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="post" style="background: #fff;">
+                    <div class="col-lg-6" style="padding: 0;">
+                        <img src="{% static 'pages_app/images/lawer/service_3.jpg' %}" />
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="t-center" style="padding: 70px 0;">
+                            <h3>The title of the service</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus.</p>
+                            <a class="btn btn-skin" href="{% url 'pages_app:under_construction' %}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="post" style="background: #fff;">
+                    <div class="col-lg-6 fix-right" style="padding: 0;">
+                        <div class="art-header">
+                            <img src="{% static 'pages_app/images/lawer/service_4.jpg' %}" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="t-center" style="padding: 70px 0;">
+                            <h3>The title of the service</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus.</p>
+                            <a class="btn btn-skin" href="{% url 'pages_app:under_construction' %}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="post" style="background: #fff;">
+                    <div class="col-lg-6" style="padding: 0;">
+                        <img src="{% static 'pages_app/images/lawer/service_5.jpg' %}" />
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="t-center" style="padding: 70px 0;">
+                            <h3>The title of the service</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus.</p>
+                            <a class="btn btn-skin" href="{% url 'pages_app:under_construction' %}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- ////////////Content Box 04 -->
+    <section class="box-content box-4 box-style-1" id="news">
+        <div class="container">
+            <div class="row heading">
+                <div class="col-lg-12">
+                    <h2>TESTIMONIALS</h2>
+                    <hr class="line02">
+                    <div class="intro">Lorem ipsum dolor sit amet</div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box-item">
+                        <div class="wrap-img">
+                            <img src="{% static 'pages_app/images/lawer/p_1.png' %}" class="img-circle" alt="">
+                        </div>
+                        <p>Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. Pellentesque rutrum fringilla elementum. Curabitur tincidunt porta lorem vitae accumsan. Aenean feugiat in ante et blandit. Vestibulum
+                            posuere molestie risus, ac interdum magna porta non. Pellentesque rutrum fringilla elementum. Curabitur tincidunt porta lorem vitae accumsan. </p>
+                        <div class="info">
+                            WILL SMITH
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box-item">
+                        <div class="wrap-img">
+                            <img src="{% static 'pages_app/images/lawer/p_2.png' %}" class="img-circle" alt="">
+                        </div>
+                        <p>Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. Pellentesque rutrum fringilla elementum. Curabitur tincidunt porta lorem vitae accumsan. Aenean feugiat in ante et blandit. Vestibulum
+                            posuere molestie risus, ac interdum magna porta non. Pellentesque rutrum fringilla elementum. Curabitur tincidunt porta lorem vitae accumsan. </p>
+                        <div class="info">
+                            WILL SMITH
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box-item">
+                        <div class="wrap-img">
+                            <img src="{% static 'pages_app/images/people3.jpg' %}" class="img-circle" alt="">
+                        </div>
+                        <p>Aenean feugiat in ante et blandit. Vestibulum posuere molestie risus, ac interdum magna porta non. Pellentesque rutrum fringilla elementum. Curabitur tincidunt porta lorem vitae accumsan. Aenean feugiat in ante et blandit. Vestibulum
+                            posuere molestie risus, ac interdum magna porta non. Pellentesque rutrum fringilla elementum. Curabitur tincidunt porta lorem vitae accumsan. </p>
+                        <div class="info">
+                            WILL SMITH
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br>
+
+    <!-- ////////////Content top footer -->
+
+    <section class="top-footer">
+        <div id="owl-brand" class="owl-carousel">
+            <div class="item">
+                <a href="https://www.gosi.gov.sa/GOSIOnline/GOSIOnlineHomepage"><img src="{% static 'pages_app/images/lawer/tameen.jpg' %}" /></a>
+            </div>
+            <div class="item">
+                <a href="https://hrsd.gov.sa/"><img src="{% static 'pages_app/images/lawer/tnmea.jpg' %}" /></a>
+            </div>
+            <div class="item">
+                <a href="https://www.moj.gov.sa/ar/pages/default.aspx"><img src="{% static 'pages_app/images/lawer/minisrty.jpg' %}" /></a>
+            </div>
+            <div class="item">
+                <a href="https://najiz.moj.gov.sa/Account/Login?ReturnUrl=%2FHome%2FDashboard"><img src="{% static 'pages_app/images/lawer/najiz.jpg' %}" /></a>
+            </div>
+            <div class="item">
+                <a href="https://www.absher.sa/portal/landing.html"><img src="{% static 'pages_app/images/lawer/ebsher.jpg' %}" /></a>
+            </div>
+            <div class="item">
+                <a href="https://www.my.gov.sa/wps/portal/snp/pages/agencies/agencyDetails/AC057"><img src="{% static 'pages_app/images/lawer/jwazat.jpg' %}" /></a>
+            </div>
+            <div class="item">
+                <a href="https://hrsd.gov.sa/"><img src="{% static 'pages_app/images/lawer/tnmea.jpg' %}" /></a>
+            </div>
+        </div>
+    </section>
+    <br><br>
+
+</div>
+
+{% endblock %}

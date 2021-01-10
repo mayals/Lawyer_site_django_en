@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block content %} {% load crispy_forms_tags %}
+
+
+
+<br><br><br>
+
+<!--messges -->
+{% if messages %} {% for message in messages %}
+<div class='alert alert-{{message.tags}}'>
+    <strong>{{ message }}</strong>
+</div> {% endfor %} {% endif %}
+<!--end messages -->
+
+
+
+
+<div class="container">
+    <section>
+        <div>
+            <h5>Login Here:</h5>
+        </div>
+        <!-- login form  -->
+        <div class='row '>
+            <div class='col-md-8'>
+                <form method="POST" class="form-group">
+                    {%csrf_token %}
+                    <div>
+                        {{form|crispy}}
+                    </div>
+                    <div><button type='submit ' class="btn btn-skin">Login</button></div>
+                </form>
+
+                <ul style="float:right;">
+                    <li> If you dont have account , you need <a href="{% url 'account_app:register' %}"><b>Register</b></a></li>
+                </ul>
+
+                <br><br><br>
+
+            </div>
+        </div>
+
+    </section>
+</div>
+
+
+
+
+
+{% endblock %}

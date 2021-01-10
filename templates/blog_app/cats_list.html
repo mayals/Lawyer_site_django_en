@@ -1,0 +1,90 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<br><br><br>
+<!--messges -->
+{% if messages %} {% for message in messages %}
+<div class='alert alert-{{message.tags}}'>
+    <strong>{{ message }}</strong>
+</div> {% endfor %} {% endif %}
+
+<!--end messages -->
+
+
+<section class="box-content box-1 box-style-1 ">
+    <div class="container">
+
+
+
+
+
+        <div>
+            <p>
+                <ol class="breadcrumb" style="background-color: #cacaca;">
+                    <li>
+                        <h5>{{page_title}}</h5>
+                    </li>
+                    <li style="float:right;">
+                        <p><small><span class="badge">{{ cats_count}}</span> Categories</small></p>
+                    </li>
+                </ol>
+            </p>
+        </div>
+
+
+        <div style="float:right;">
+            {% include 'blog_app/pagination.html' with page=cats %}
+        </div>
+        <br><br><br>
+
+
+
+        <div>
+            {% for cat in cats %}
+            <div>
+                <a href="{% url 'blog_app:posts_to_cat' cat.id %}">
+                    <div class="row" style="border-bottom:1px solid  #b3b3b3; padding-top:20px !important ;padding-bottom:20px !important;">
+
+                        <div class="col-sm-6 col-md-4 " style="padding-left:0px !important; padding-right: 0px !important ">
+                            <img src="{{ cat.cat_image.url }} " alt="Category image " width="150 " height="150 " style="float:right;">
+                        </div>
+
+                        <div class="col-sm-6 col-md-8 ">
+                            <div>
+                                <div>
+                                    <p><b>{{cat.cat_title}}</b></p>
+
+                                    <p class=" text-muted ">{{cat.cat_des}}</p>
+                                </div>
+
+                                <p>
+                                    <span class="badge">  {{ cat.posts_for_cat_count}} </span> posts
+                                </p>
+
+                                <br><br>
+
+                                <div>
+                                    <p style="padding-left:5px; padding-left:5px ;">
+                                        <small class=" text-muted ">
+                                            <i class="fa fa-calendar-o"></i>
+                                             {{cat.cat_created|date:"d M Y"}} | 
+                                            <i class="fa fa-hourglass-o"></i>
+                                             {{cat.cat_updated|date:"d M Y"}}
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+                {% empty %}
+                <p style="padding:30">No Category add yet !</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

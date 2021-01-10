@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container" style="padding-left:5px;padding-top:80px">
+
+
+    <br><br><br>
+
+    <!--messges -->
+    {% if messages %} {% for message in messages %}
+    <div class='alert alert-{{message.tags}}'>
+        <strong>{{ message }}</strong>
+    </div> {% endfor %} {% endif %}
+    <!--end messages -->
+
+    <section>
+
+        <div>
+            <p>
+                <ol class="breadcrumb">
+
+                    <li><b><a href="{% url 'blog_app:cats_list' %}">Categories </a></b></li>
+                    <!-- ><li><a href="#">Library</a></li> -->
+                    <li class="active"><b>{{cat_selected.cat_title}}</b></li>
+                    <p style="float:right;"><small><span class="badge">{{posts_cat_count}}</span> Posts</small></p>
+                </ol>
+            </p>
+        </div>
+
+        <a class="btn btn-info" href="{% url  'blog_app:post_add'  cat_selected.id %}">add new post</a>
+
+        <div style="float:right;">
+            {% include 'blog_app/pagination.html' with page=posts_cat %}
+        </div>
+        <br><br><br>
+
+        <div style="padding-left: 10px; padding-right: 10px;">
+            {% for post in posts_cat %}
+            <div class="row" style="border-bottom:1px solid  #b3b3b3; padding-top:20px !important ;padding-bottom:20px !important;">
+                <div class="col-sm-4 col-md-2 " style="padding-left:0px !important; padding-right: 0px !important ">
+                    <img src="{{post.post_author.profile_to_user.prof_image.url}}" alt="author image" width="75" height="75" style=" float:right;">
+                </div>
+                <div class="col-sm-8 col-md-10 ">
+                    <div>
+                        <p><b>{{post.post_title}}</b></p>
+                        <div>
+                            <p class="text-muted" style="float:left;">
+                                <small>
+                                    <i class="fa fa-5 fa-pencil"></i>  {{post.post_author}}  |
+                                    <i class="fa fa-calendar-o "></i> {{post.post_created |date:'d-m-Y'}}  | 
+                                    <i class="fa fa-calendar-check-o"></i> {{post.post_updated |date:'d-m-Y'}}  |
+                                    <i class="fa fa fa-eye"></i> {{post.post_views_counter}}  | 
+                                    <i class="fa fa fa-comment"></i> {{post.comments_for_post_count}}
+                            </small>
+                            </p>
+                        </div>
+
+                        <br><br>
+                        <p>
+                            {% if post.post_text|length > 200 %} {{post.post_text|slice:'210'}} .. {% else %} {{post.post_text}} {% endif %}
+                        </p>
+
+                        <a href="{%  url 'blog_app:cat_post_detail' cat_selected.id  post.id %}" class="btn btn-warning m-4" style="float:right;"> 
+                            Read more 
+                        </a>
+                        <br><br><br><br>
+
+                    </div>
+
+                </div>
+            </div>
+            {% empty %}
+            <p style="padding:30">No post add for this category yet !</p>
+        </div>
+        {% endfor %}
+</div>
+
+</section>
+
+
+</div>
+
+
+{% endblock %}

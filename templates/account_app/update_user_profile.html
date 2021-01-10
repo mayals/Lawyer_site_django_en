@@ -1,0 +1,61 @@
+{% extends 'base.html' %} {% block content %} {% load crispy_forms_tags %}
+
+
+<div class="container">
+    <section>
+
+
+        <br><br><br>
+
+
+        <div>
+            <p>
+                <ol class="breadcrumb">
+
+                    <li><b><a href="{% url 'account_app:profile' %}">profile </a></b></li>
+                    <li class="active"><b>{{user.username}}</b></li>
+                </ol>
+            </p>
+        </div>
+
+
+
+        <br>
+        <div>
+            <h5>profile and user update </h5>
+        </div>
+        <br><br>
+        <!-- add new post form  -->
+        <div class='row '>
+            <div class='col-md-4'>
+                <img width="150" height="150" style="object-position:center !important;" src="{{user.profile_to_user.prof_image.url}}" alt="author image">
+            </div>
+
+            <div class='col-md-8'>
+                <form method="POST" enctype="multipart/form-data" class="form-group">
+                    {%csrf_token %}
+                    <div>
+                        {{update_user_form|crispy}}
+                    </div>
+                    <div>
+                        {{update_profile_form|crispy}}
+                    </div>
+
+                    <br>
+
+                    <div><button type='submit ' class="btn btn-skin">update profile and user</button></div>
+                </form>
+
+                <br><br><br>
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container" style="">
+    <section>
+
+
+        <br><br><br>
+
+        <!--messges -->
+        {% if messages %} {% for message in messages %}
+        <div class='alert alert-{{message.tags}}'>
+            <strong>{{ message }}</strong>
+        </div> {% endfor %} {% endif %}
+
+        <!--end messages -->
+
+
+
+        <div>
+            <p>
+                <ol class="breadcrumb">
+                    <li><b><a href="{% url 'blog_app:cats_list' %}">Categories </a></b></li>
+                    <li><a href="{% url 'blog_app:posts_to_cat' cat_selected.id %}">{{cat_selected}}</a></li>
+                    <li class="active"><b>{{cat_post_detail}} </li></b>
+                        <p style="float:right;"><small><span class="badge">{{comments_post_count}}</span> Comments</small></p>
+                </ol>
+            </p>
+        </div>
+
+
+        <!-- post start -->
+
+
+
+        <div>
+            <div class="row" style="background-color:rgb(255, 255, 255); padding-top:30px;">
+
+
+                <div class="col-sm-2 col-md-1 ">
+                    <img src="{{cat_post_detail.post_author.profile_to_user.prof_image.url}}" alt="author image" width="50 " height="50" style=" float:left;">
+                </div>
+                <div class="col-sm-10 col-md-11 ">
+                    <div>
+                        <p style=" float:left;"><b>{{cat_post_detail.post_title}}</b></p>
+                    </div>
+
+
+                    {% if cat_post_detail.post_author == user %}
+                    <div>
+                        <a class="btn btn-danger" style="float:right;" href="{% url 'blog_app:post_delete' cat_selected.id  cat_post_detail.id  %}">delete</a>
+                        <a class="btn btn-info" style="float:right;" href="{% url 'blog_app:post_update' cat_selected.id  cat_post_detail.id  %}">update</a>
+                    </div>
+                    {% endif %}
+
+
+                    <br><br>
+
+                    <div>
+                        <p style=" float:left;">
+                            <ol style="padding-inline-start: 0px;">
+                                <small>
+                                    <i class="fa fa-5 fa-pencil"></i>  {{cat_post_detail.post_author}}  | 
+                                    <i class="fa fa-calendar-o "></i> {{cat_post_detail.post_created |date:'d-m-Y'}} | 
+                                    <i class="fa fa-calendar-check-o"></i> {{cat_post_detail.post_updated |date:'d-m-Y'}}  |
+                                    <i class="fa fa fa-eye"></i> {{cat_post_detail.post_views_counter}}  |
+                                    <i class="fa fa fa-comment"></i> {{comments_post_count }}  
+                                </small>
+                            </ol>
+                        </p>
+                    </div>
+
+                    <br>
+
+                    <div>
+                        <p>
+                            {{cat_post_detail.post_text}} ..
+                        </p>
+                    </div>
+
+                    <br><br><br>
+                </div>
+
+            </div>
+            <!-- post end -->
+
+
+
+            <!-- comments start -->
+            <div class="row" style="padding-top:30px;">
+                <div>
+                    <p class='text-center' style="background-color:rgb(245,245,245); padding:10px;margin-left: 15px;margin-right: 15px;"><strong> Comments ( {{ comments_post_count }} )</strong></p>
+                </div>
+            </div>
+
+            <br>
+            <div>
+                {% for comment in comments %}
+
+                <div class="row">
+                    <div class="col-sm-4 col-md-2">
+                        <img src="{{comment.comment_author.profile_to_user.prof_image.url}} " alt="author image" width="50 " height="50" style=" float:right;">
+                    </div>
+
+                    <div class="col-sm-8 col-md-10">
+                        <div>
+                            <p class="text-muted">
+                                <small>
+                            <i class="fa fa-5 fa-pencil "></i> {{comment.comment_author}}  | 
+                            <i class="fa fa-calendar-o "></i> {{comment.comment_created |date:'d-m-Y '}}  | 
+                            <i class="fa fa-calendar-check-o"></i> {{comment.comment_updated |date:'d-m-Y '}}  
+                                </small>
+                            </p>
+                        </div>
+
+                        <div>
+                            <p>
+                                {{comment.comment_text}}
+                            </p>
+                        </div>
+                        <br><br>
+                    </div>
+                </div>
+
+                <br> {% empty %}
+                <div>
+                    <p class='text-center' style="padding:30">No comment add for this post yet !</p>
+                </div>
+                {% endfor %}
+            </div>
+
+
+
+            <br><br>
+
+
+
+            <!-- add comment form  -->
+
+            <form method="POST">
+                {% csrf_token %} {{form}}
+                <br>
+                <input type="submit" value="add comment" class="btn btn-warning">
+            </form>
+
+
+
+
+        </div>
+
+    </section>
+</div>
+
+
+{% endblock %}

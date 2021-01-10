@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% block content %} {% load crispy_forms_tags %}
+
+
+
+
+
+
+<div class="container">
+    <section>
+
+
+        <br><br><br>
+
+
+        <div>
+            <p>
+                <ol class="breadcrumb">
+
+                    <li><b><a href="{% url 'blog_app:cats_list' %}">Categories </a></b></li>
+                    <!-- ><li><a href="#">Library</a></li> -->
+                    <li><b><a href="{% url 'blog_app:posts_to_cat' cat_selected.id  %}">{{cat_selected.cat_title}}</a></b></li>
+                    <li class="active"><b>{{cat_post_detail.post_title}}</b></li>
+                </ol>
+            </p>
+        </div>
+
+
+
+        <br>
+        <div>
+            <h5>Post update </h5>
+        </div>
+        <br><br>
+        <!-- add new post form  -->
+        <div class='row '>
+            <div class='col-md-8'>
+                <form method="POST" class="form-group">
+                    {%csrf_token %}
+                    <div>
+                        {{form|crispy}}
+                    </div>
+                    <br>
+                    <div><button type='submit ' class="btn btn-skin">update post</button></div>
+                </form>
+
+                <br><br><br>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+
+
+
+
+{% endblock %}

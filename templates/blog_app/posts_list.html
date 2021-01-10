@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+
+<section class="box-content box-1 box-style-1 ">
+
+    <div class="container">
+        <h5>{{page_title}}</h5>
+
+        <div>
+            {% for cat in cats %}
+            <div class="row" style="border-bottom:1px solid  #b3b3b3; padding-top:20px !important ;padding-bottom:20px !important;">
+                <div class="col-sm-6 col-md-2 " style="padding-left:0px !important; padding-right: 0px !important ">
+                    <img alt="Category image" src="{{ cat.cat_image.url }} " style="float:right;">
+                </div>
+                <div class="col-sm-6 col-md-10 ">
+                    <div>
+                        <p>{{cat.cat_title}}</p>
+                        <p><small>written by:{{cat.posts_to_author.post_author}} </small></p>
+                        <div>
+                            <p><small class=" text-muted ">{{cat.cat_des}}</small></p><br>
+                            <p style="padding-left:5px; padding-left:5px ;"><small class=" text-muted "><i class="fa fa-calendar-o"></i> {{cat.cat_created|date:"d M Y"}} | <i class="fa fa-hourglass-o"></i> {{cat.cat_updated|date:"d M Y"}}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

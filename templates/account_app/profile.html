@@ -1,0 +1,84 @@
+{% extends 'base.html' %} {% block content %}
+
+<br><br><br><br><br><br>
+
+<!--messges -->
+{% if messages %} {% for message in messages %}
+<div class='alert alert-{{message.tags}}'>
+    <strong>{{ message }}</strong>
+</div> {% endfor %} {% endif %}
+
+<!--end messages -->
+
+<div class="container">
+    <section>
+        <h4>Personal Profile </h4>
+
+        <br><br>
+
+
+
+
+
+        <div class="panel panel-warning row" style="padding:20px;">
+            <div class="col-xs-12 col-md-6">
+
+                <div class="panel panel-warning">
+                    <div class="panel-body">
+
+                        <img width="150" height="150" style="object-position:center !important;" src="{{user.profile_to_user.prof_image.url}}" alt="author image">
+                        <h1 style="padding:2px;margin-left: 6px;">{{user.username}}</h1>
+                        <a class="btn btn-info" style="float:right;" href="{% url 'account_app:update_user_profile'  %}">update</a>
+
+                    </div>
+
+                    <div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger"> personal information </li>
+                    <li class="list-group-item">Usernam : {{user.username}}</li>
+                    <li class="list-group-item">First Name : {{user.first_name}}</li>
+                    <li class="list-group-item">Last Name : {{user.last_name}}</li>
+                    <li class="list-group-item">Email : {{user.email}}</li>
+                    <li class="list-group-item">Mobile Number : {{user.profile_to_user.prof_mob}}</li>
+                    <li class="list-group-item">Gender: {{user.profile_to_user.gender}}</li>
+                </ul>
+
+
+                <br><br><br>
+                <div>
+                    <p><strong>your posts :</strong></p>
+                    <div style="float:right;">
+                        {% include 'blog_app/pagination.html' with page=posts_to_author %}
+                    </div>
+                    <br><br><br>
+
+
+                    <ul class="list-group">
+                        {% for post in posts_to_author %}
+                        <li class="list-group-item list-group-item-danger"><a href="{% url 'blog_app:cat_post_detail' cat_id=post.cat_fk.id  post_id=post.id %}">post_title : {{ post.post_title }}</a></li>
+                        <li class="list-group-item fa fa-calendar-o "> : {{ post.post_created }}</li>
+                        <li class="list-group-item fa fa-calendar-check-o "> : {{post.post_updated }}</li>
+                        <li class="list-group-item fa fa fa-eye "> : {{ post.post_views_counter }}</li>
+                        <li class="list-group-item fa fa fa-comment "> : {{ post.comments_for_post_count }}</li>
+                        <br><br> {% empty %}
+                        <li class="list-group-item ">no post written by you {{user.username }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br><br>
+</div>
+
+
+{% endblock %}
